@@ -3,8 +3,9 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import AuthButtonClient from "../auth-button-client"
+import GitHubButton from "./github-button"
 
+export const dynamic = "force-dynamic"
 export default async function Login() {
   const supabase = createServerComponentClient<Database>({ cookies })
 
@@ -17,9 +18,8 @@ export default async function Login() {
   }
 
   return (
-    <div>
-      <div>ログインページ</div>
-      <AuthButtonClient session={session} />
+    <div className="flex-1 flex justify-center items-center">
+      <GitHubButton />
     </div>
   )
 }
